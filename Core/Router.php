@@ -21,6 +21,11 @@
                 $this->routes['GET'][$path] = $callback;
             }
 
+            public function post($path, $callback)
+            {
+                $this->routes['POST'][$path] = $callback;
+            }
+
             public function resolve()
             {
                 $path = $this->request->getpath();
@@ -63,8 +68,9 @@
 
             private function content_layout()
             {
+                $main_layout =  $this->controller->layout ?? 'main_layout'; 
                 ob_start();
-                include_once Application::$root_dir . "/Views/master/{$this->controller->layout}.php";
+                include_once Application::$root_dir . "/Views/master/{$main_layout}.php";
                 return ob_get_clean();
             }
 

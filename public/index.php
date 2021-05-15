@@ -5,5 +5,6 @@
  
     $app = new Application(dirname(__DIR__));
     $app->route->get('/', [UserController::class, 'user']);
+    $app->route->post('/auth', [UserController::class, 'post_user']);
 
     $app->run();
