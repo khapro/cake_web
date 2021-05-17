@@ -1,8 +1,9 @@
 <?php
     namespace App\Models;
     use App\Core\Model;
+    use App\Core\ModelDB;
 
-    class UserModel extends Model 
+    class UserModel extends ModelDB 
     {
         public string $email;
         public string $password;
@@ -13,5 +14,15 @@
                 'email' => [self::RULE_REQUIRED, self::RULE_EMAIL],
                 'password' =>[self::RULE_REQUIRED]
             ];
+        }
+
+        public function get_table(): string
+        {
+            return '';
+        }
+
+        public function get_atributes(): array
+        {
+            return [];
         }
     }
