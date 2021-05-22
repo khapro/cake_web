@@ -1,20 +1,27 @@
 <?php
     namespace App\Core;
-    use mysqli;
 
-    class Database
-    {
-        protected mysqli $mysqli;
+        use PDO;
+        use PDOException;
 
-        public function __construct(array $config)
+        class Database
         {
-            $host = $config['db_info']['host'];
-            $db_name = $config['db_info']['db_name'];
-            $port = $config['db_info']['port'];
-            $user = $config['db_info']['user'];
-            $password = $config['db_info']['password'];
-            $this->mysqli = new mysqli($host, $user, $password, $db_name, $port);
-            
-        }
+            public PDO $pdo;
 
-    }
+            public function __construct(array $config)
+            {
+                try 
+                {
+                    $host = $config['db_info']['db_conection_string'];
+                    $user = $config['db_info']['user'];
+                    $password = $config['db_info']['password'];
+                    $this->pdo = new PDO($host, $user, $password);
+                    $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                } 
+                catch (PDOException $ex) 
+                {
+                    die($ex->getMessage());
+                }
+            }
+
+        }

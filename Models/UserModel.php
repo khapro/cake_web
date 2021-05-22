@@ -18,11 +18,11 @@
 
         public function get_table(): string
         {
-            return '';
+            return 'user';
         }
 
         public function get_atributes(): array
         {
-            return [];
+            return ['email', 'password'];
         }
     }

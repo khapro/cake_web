@@ -16,14 +16,6 @@
            {
                 $user_model = new UserModel();
                 $user_model->load_data($request->get_body());
-
-                if($user_model->validate())
-                {
-                    echo 'dữ liệu sạch';
-                }
-                else
-                {
-                    var_dump($user_model->errors);
-                }
+                $user_model->save();
            }
         }

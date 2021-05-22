@@ -115,4 +115,14 @@
 
                 }
             }
+
+            public function has_error($attribute)
+            {
+                return $this->errors[$attribute]?? false;
+            }
+
+            public function get_frist_error($attribute)
+            {
+                return $this->errors[$attribute];
+            }
         }

@@ -6,10 +6,8 @@
     
     return [
         'db_info' => [
-            'host' => $_ENV['DB_HOST'],
-            'db_name' => $_ENV['DB_NAME'],
+            'db_conection_string' => $_ENV['DB_CONECTION_STRING'],
             'user' => $_ENV['DB_USER'],
             'password' => $_ENV['DB_PASSWORD'] ?? '',
-            'port' => $_ENV['DB_PORT']
         ]
     ];
